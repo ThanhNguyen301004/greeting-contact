@@ -1,6 +1,6 @@
 # Greeting Contract - Group 2
 
-## 📋 Project Information
+## Project Information
 
 **Project Name:** Greeting Contract  
 **Course:** DS 441 A  
@@ -14,18 +14,18 @@
 
 ---
 
-## 📖 Project Description
+## Project Description
 
 ### What the Project Does
 The Greeting Contract is a blockchain-based smart contract that allows users to store and update text messages (greetings) on the Ethereum blockchain. The contract maintains a complete history of all greetings and emits events whenever a greeting is updated, providing full transparency and traceability.
 
 ### Key Features
-- 💬 Store and retrieve greeting messages
-- 📝 Update greetings with full event logging
-- 📜 Complete history tracking of all greetings
-- 🔍 Query past greetings with timestamps and updater information
-- ✅ Input validation (empty and length checks)
-- 📊 Contract statistics and information
+-  Store and retrieve greeting messages
+-  Update greetings with full event logging
+-  Complete history tracking of all greetings
+-  Query past greetings with timestamps and updater information
+-  Input validation (empty and length checks)
+-  Contract statistics and information
 
 ### Problem It Solves
 This contract demonstrates fundamental blockchain concepts including:
@@ -39,7 +39,7 @@ It can be used as a foundation for more complex message systems, public announce
 
 ---
 
-## 🛠️ Setup Instructions
+##  Setup Instructions
 
 ### Prerequisites
 - Python 3.8 or higher
@@ -82,7 +82,7 @@ Open `deploy.py` and `interact.py` and replace the private key placeholder:
 private_key = "0x..."  # Replace with your Ganache private key
 ```
 
-**⚠️ IMPORTANT:** In the Ganache GUI, click on the key icon next to the first account to view and copy the private key.
+** IMPORTANT:** In the Ganache GUI, click on the key icon next to the first account to view and copy the private key.
 
 ### 4. Deploy the Contract
 
@@ -94,19 +94,19 @@ python deploy.py
 
 Expected output:
 ```
-🎯 GREETING CONTRACT DEPLOYMENT
-🔗 Connecting to Ganache...
-✅ Connected to Ganache!
-📦 Compiling contract...
-✅ Contract compiled successfully!
-🚀 Deploying contract...
-✅ Contract deployed successfully!
-📍 Contract Address: 0x...
+ GREETING CONTRACT DEPLOYMENT
+ Connecting to Ganache...
+ Connected to Ganache!
+ Compiling contract...
+ Contract compiled successfully!
+ Deploying contract...
+ Contract deployed successfully!
+ Contract Address: 0x...
 ```
 
 ---
 
-## 📱 Usage Instructions
+##  Usage Instructions
 
 ### Interactive Menu
 
@@ -119,7 +119,7 @@ python interact.py
 You'll see a menu with the following options:
 
 ```
-🎯 GREETING CONTRACT INTERACTION MENU
+ GREETING CONTRACT INTERACTION MENU
 1. Get Current Greeting
 2. Set New Greeting
 3. View Contract Info
@@ -221,7 +221,7 @@ tx = contract.functions.setGreeting("New Message").build_transaction({
 
 ---
 
-## 🔧 Smart Contract Functions
+##  Smart Contract Functions
 
 ### Public Functions
 
@@ -305,7 +305,7 @@ tx = contract.functions.setGreeting("New Message").build_transaction({
 
 ---
 
-## 🧪 Testing Instructions
+##  Testing Instructions
 
 ### How to Run Tests
 
@@ -364,34 +364,34 @@ The test suite includes 10 comprehensive tests:
 Successful test run shows:
 
 ```
-🧪 GREETING CONTRACT TEST SUITE
-✅ Connected to Ganache
-📍 Testing contract at: 0x...
+ GREETING CONTRACT TEST SUITE
+ Connected to Ganache
+ Testing contract at: 0x...
 
-🧪 Test 1: Get initial greeting
-   ✅ Initial greeting: 'Hello, Blockchain World!'
+ Test 1: Get initial greeting
+    Initial greeting: 'Hello, Blockchain World!'
 
 ...
 
-📊 TEST SUMMARY
+ TEST SUMMARY
 Tests Run: 10
-✅ Passed: 10
-❌ Failed: 0
-⚠️  Errors: 0
+ Passed: 10
+ Failed: 0
+  Errors: 0
 ```
 
 ### Edge Cases Tested
 
-- ✅ Empty greeting strings
-- ✅ Oversized greeting strings (>200 characters)
-- ✅ Multiple rapid updates
-- ✅ History boundary conditions
-- ✅ Event emission verification
-- ✅ Counter increment accuracy
+-  Empty greeting strings
+-  Oversized greeting strings (>200 characters)
+-  Multiple rapid updates
+-  History boundary conditions
+-  Event emission verification
+-  Counter increment accuracy
 
 ---
 
-## 📁 Project Structure
+##  Project Structure
 
 ```
 greeting-contract/
@@ -422,14 +422,14 @@ greeting-contract/
 - **View Functions:** 0 gas (read-only)
 
 ### Security Features
-- ✅ Input validation (length and emptiness)
-- ✅ Overflow protection (Solidity 0.8.0+)
-- ✅ Event logging for transparency
-- ✅ Immutable history
+-  Input validation (length and emptiness)
+-  Overflow protection (Solidity 0.8.0+)
+-  Event logging for transparency
+-  Immutable history
 
 ---
 
-## 🚨 Troubleshooting
+##  Troubleshooting
 
 ### Common Issues
 
@@ -455,38 +455,38 @@ greeting-contract/
 
 ---
 
-## 📊 Grading Criteria Coverage
+##  Grading Criteria Coverage
 
 ### Smart Contract (35%)
-✅ Fully functional greeting storage and retrieval  
-✅ Event logging implementation  
-✅ Input validation and error handling  
-✅ Clean, well-commented code  
-✅ Gas-efficient operations
+ Fully functional greeting storage and retrieval  
+ Event logging implementation  
+ Input validation and error handling  
+ Clean, well-commented code  
+ Gas-efficient operations
 
 ### Python Scripts (25%)
-✅ Complete deployment script with error handling  
-✅ Interactive menu for user-friendly interaction  
-✅ Proper Web3.py integration  
-✅ Transaction signing and confirmation  
-✅ Comprehensive error messages
+ Complete deployment script with error handling  
+ Interactive menu for user-friendly interaction  
+ Proper Web3.py integration  
+ Transaction signing and confirmation  
+ Comprehensive error messages
 
 ### Testing & Documentation (20%)
-✅ 10 comprehensive test cases  
-✅ Edge case validation  
-✅ Complete README with all requirements  
-✅ Clear setup and usage instructions  
-✅ Technical documentation
+ 10 comprehensive test cases  
+ Edge case validation  
+ Complete README with all requirements  
+ Clear setup and usage instructions  
+ Technical documentation
 
 ### Presentation (20%)
-✅ Clear problem statement  
-✅ Live demo ready  
-✅ Technical architecture explained  
-✅ Q&A preparation
+ Clear problem statement  
+ Live demo ready  
+ Technical architecture explained  
+ Q&A preparation
 
 ---
 
-## 🎯 Future Enhancements
+##  Future Enhancements
 
 Potential improvements for this project:
 - Add user authentication for private greetings
@@ -498,7 +498,7 @@ Potential improvements for this project:
 
 ---
 
-## 📞 Support
+##  Support
 
 If you encounter any issues:
 1. Check the Troubleshooting section above
@@ -508,7 +508,7 @@ If you encounter any issues:
 
 ---
 
-## 📄 License
+##  License
 
 This project is created for educational purposes as part of DS 441 A course.
 
