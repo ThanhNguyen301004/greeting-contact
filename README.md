@@ -6,7 +6,7 @@
 **Course:** DS 441 A  
 **Group Number:** Group 2
 
-### 👥 Group Members
+###  Group Members
 - [Member 1 Name] - [Student ID]
 - [Member 2 Name] - [Student ID]
 - [Member 3 Name] - [Student ID]

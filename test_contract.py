@@ -32,7 +32,7 @@ class TestGreetingContract(unittest.TestCase):
             cls.contract_address = deployment_info["contract_address"]
             cls.contract = cls.w3.eth.contract(address=cls.contract_address, abi=abi)
             cls.account = cls.w3.eth.accounts[0]
-            cls.private_key = "0x..."  # Replace with your Ganache private key
+            cls.private_key = "0x691101e28684e29cb3846276021e2d45feab0f4031f98c0c72e89f48d637a6fa"  # Replace with your Ganache private key
             
             print(f"📍 Testing contract at: {cls.contract_address}")
             print(f"👤 Using account: {cls.account}\n")
@@ -64,7 +64,7 @@ class TestGreetingContract(unittest.TestCase):
         })
         
         signed_txn = self.w3.eth.account.sign_transaction(transaction, private_key=self.private_key)
-        tx_hash = self.w3.eth.send_raw_transaction(signed_txn.raw_transaction)
+        tx_hash = self.w3.eth.send_raw_transaction(signed_txn.rawTransaction)
         tx_receipt = self.w3.eth.wait_for_transaction_receipt(tx_hash)
         
         self.assertEqual(tx_receipt.status, 1)
@@ -89,7 +89,7 @@ class TestGreetingContract(unittest.TestCase):
         })
         
         signed_txn = self.w3.eth.account.sign_transaction(transaction, private_key=self.private_key)
-        tx_hash = self.w3.eth.send_raw_transaction(signed_txn.raw_transaction)
+        tx_hash = self.w3.eth.send_raw_transaction(signed_txn.rawTransaction)
         tx_receipt = self.w3.eth.wait_for_transaction_receipt(tx_hash)
         
         # Check event logs
@@ -122,7 +122,7 @@ class TestGreetingContract(unittest.TestCase):
         })
         
         signed_txn = self.w3.eth.account.sign_transaction(transaction, private_key=self.private_key)
-        tx_hash = self.w3.eth.send_raw_transaction(signed_txn.raw_transaction)
+        tx_hash = self.w3.eth.send_raw_transaction(signed_txn.rawTransaction)
         self.w3.eth.wait_for_transaction_receipt(tx_hash)
         
         info_after = self.contract.functions.getContractInfo().call()
@@ -162,7 +162,7 @@ class TestGreetingContract(unittest.TestCase):
             })
             
             signed_txn = self.w3.eth.account.sign_transaction(transaction, private_key=self.private_key)
-            tx_hash = self.w3.eth.send_raw_transaction(signed_txn.raw_transaction)
+            tx_hash = self.w3.eth.send_raw_transaction(signed_txn.rawTransaction)
             self.w3.eth.wait_for_transaction_receipt(tx_hash)
         
         print(f"   ✅ Empty greeting correctly rejected")
@@ -184,7 +184,7 @@ class TestGreetingContract(unittest.TestCase):
             })
             
             signed_txn = self.w3.eth.account.sign_transaction(transaction, private_key=self.private_key)
-            tx_hash = self.w3.eth.send_raw_transaction(signed_txn.raw_transaction)
+            tx_hash = self.w3.eth.send_raw_transaction(signed_txn.rawTransaction)
             self.w3.eth.wait_for_transaction_receipt(tx_hash)
         
         print(f"   ✅ Long greeting correctly rejected")
@@ -214,7 +214,7 @@ class TestGreetingContract(unittest.TestCase):
             })
             
             signed_txn = self.w3.eth.account.sign_transaction(transaction, private_key=self.private_key)
-            tx_hash = self.w3.eth.send_raw_transaction(signed_txn.raw_transaction)
+            tx_hash = self.w3.eth.send_raw_transaction(signed_txn.rawTransaction)
             self.w3.eth.wait_for_transaction_receipt(tx_hash)
             
             current = self.contract.functions.getGreeting().call()

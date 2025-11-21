@@ -44,7 +44,7 @@ def set_greeting(contract, w3, account, private_key, new_greeting):
         
         # Sign and send transaction
         signed_txn = w3.eth.account.sign_transaction(transaction, private_key=private_key)
-        tx_hash = w3.eth.send_raw_transaction(signed_txn.raw_transaction)
+        tx_hash = w3.eth.send_raw_transaction(signed_txn.rawTransaction)
         
         print("⏳ Waiting for transaction confirmation...")
         tx_receipt = w3.eth.wait_for_transaction_receipt(tx_hash)
@@ -169,7 +169,7 @@ def main():
         
         # Get account
         account = w3.eth.accounts[0]
-        private_key = "0x..."  # Replace with your Ganache private key
+        private_key = "0x691101e28684e29cb3846276021e2d45feab0f4031f98c0c72e89f48d637a6fa"  # Replace with your Ganache private key
         
         print(f"👤 Using Account: {account}")
         
