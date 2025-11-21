@@ -1,7 +1,11 @@
 import unittest
 from web3 import Web3
 import json
-import time
+import os
+from dotenv import load_dotenv
+
+# Load environment variables
+load_dotenv()
 
 class TestGreetingContract(unittest.TestCase):
     """Test cases for Greeting Contract"""
@@ -14,7 +18,8 @@ class TestGreetingContract(unittest.TestCase):
         print("=" * 60)
         
         # Connect to Ganache
-        cls.w3 = Web3(Web3.HTTPProvider("http://127.0.0.1:7545"))
+        ganache_url = os.getenv("GANACHE_URL", "http://127.0.0.1:7545")
+        cls.w3 = Web3(Web3.HTTPProvider(ganache_url))
         
         if not cls.w3.is_connected():
             raise Exception("Failed to connect to Ganache!")
@@ -31,8 +36,19 @@ class TestGreetingContract(unittest.TestCase):
             
             cls.contract_address = deployment_info["contract_address"]
             cls.contract = cls.w3.eth.contract(address=cls.contract_address, abi=abi)
-            cls.account = cls.w3.eth.accounts[0]
-            cls.private_key = "0x691101e28684e29cb3846276021e2d45feab0f4031f98c0c72e89f48d637a6fa"  # Replace with your Ganache private key
+            
+            # Get account from environment
+            cls.private_key = os.getenv("PRIVATE_KEY")
+            cls.account = os.getenv("ACCOUNT_ADDRESS")
+            
+            if not cls.private_key or not cls.account:
+                raise Exception("Private key or account not found in .env file!")
+            
+            # Validate account
+            if not cls.account.startswith('0x'):
+                cls.account = '0x' + cls.account
+            if not cls.private_key.startswith('0x'):
+                cls.private_key = '0x' + cls.private_key
             
             print(f"📍 Testing contract at: {cls.contract_address}")
             print(f"👤 Using account: {cls.account}\n")

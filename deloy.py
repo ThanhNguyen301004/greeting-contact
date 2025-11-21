@@ -3,6 +3,10 @@ from solcx import compile_standard, install_solc
 import json
 import os
 from pathlib import Path
+from dotenv import load_dotenv
+
+# Load environment variables
+load_dotenv()
 
 def compile_contract():
     """Compile the Solidity contract"""
@@ -105,25 +109,36 @@ def main():
     
     # Connect to Ganache
     print("\n🔗 Connecting to Ganache...")
-    ganache_url = "http://127.0.0.1:7545"
+    ganache_url = os.getenv("GANACHE_URL", "http://127.0.0.1:7545")
     w3 = Web3(Web3.HTTPProvider(ganache_url))
     
     if not w3.is_connected():
         print("❌ Failed to connect to Ganache!")
-        print("💡 Make sure Ganache is running on http://127.0.0.1:7545")
+        print(f"💡 Make sure Ganache is running on {ganache_url}")
         return
     
     print("✅ Connected to Ganache!")
     print(f"📊 Chain ID: {w3.eth.chain_id}")
     print(f"⛓️  Block Number: {w3.eth.block_number}")
     
-    # Get account from Ganache
-    # Replace with your Ganache account and private key
-    account = w3.eth.accounts[0]
+    # Get account from environment or Ganache
+    private_key = os.getenv("PRIVATE_KEY")
+    account = os.getenv("ACCOUNT_ADDRESS")
     
-    # NOTE: In production, NEVER hardcode private keys!
-    # Get private key from Ganache for the first account
-    private_key = "0x691101e28684e29cb3846276021e2d45feab0f4031f98c0c72e89f48d637a6fa" # Replace with your Ganache private key
+    if not private_key or not account:
+        print("\n⚠️  No private key found in .env file!")
+        print("📝 Using first Ganache account...")
+        account = w3.eth.accounts[0]
+        print(f"\n🔑 Please add your private key to .env file:")
+        print(f"   PRIVATE_KEY=your_private_key_here")
+        print(f"   ACCOUNT_ADDRESS={account}")
+        return
+    
+    # Validate account
+    if not account.startswith('0x'):
+        account = '0x' + account
+    if not private_key.startswith('0x'):
+        private_key = '0x' + private_key
     
     print(f"\n👤 Deployer Account: {account}")
     print(f"💰 Balance: {w3.from_wei(w3.eth.get_balance(account), 'ether')} ETH")

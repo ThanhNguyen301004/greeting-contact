@@ -1,6 +1,11 @@
 from web3 import Web3
 import json
+import os
 from datetime import datetime
+from dotenv import load_dotenv
+
+# Load environment variables
+load_dotenv()
 
 def load_contract(w3):
     """Load the deployed contract"""
@@ -153,7 +158,7 @@ def main():
     
     # Connect to Ganache
     print("\n🔗 Connecting to Ganache...")
-    ganache_url = "http://127.0.0.1:7545"
+    ganache_url = os.getenv("GANACHE_URL", "http://127.0.0.1:7545")
     w3 = Web3(Web3.HTTPProvider(ganache_url))
     
     if not w3.is_connected():
@@ -167,9 +172,22 @@ def main():
         contract, contract_address = load_contract(w3)
         print(f"📍 Contract loaded at: {contract_address}")
         
-        # Get account
-        account = w3.eth.accounts[0]
-        private_key = "0x691101e28684e29cb3846276021e2d45feab0f4031f98c0c72e89f48d637a6fa"  # Replace with your Ganache private key
+        # Get account from environment
+        private_key = os.getenv("PRIVATE_KEY")
+        account = os.getenv("ACCOUNT_ADDRESS")
+        
+        if not private_key or not account:
+            print("\n⚠️  No private key found in .env file!")
+            print("📝 Please create a .env file with:")
+            print("   PRIVATE_KEY=your_private_key_here")
+            print("   ACCOUNT_ADDRESS=your_account_address_here")
+            return
+        
+        # Validate account
+        if not account.startswith('0x'):
+            account = '0x' + account
+        if not private_key.startswith('0x'):
+            private_key = '0x' + private_key
         
         print(f"👤 Using Account: {account}")
         
