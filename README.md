@@ -7,8 +7,8 @@
 **Group Number:** Group 2
 
 ###  Group Members
-- Lê Thuận An - 
-- Trần Thanh Sỹ - 
+- Lê Thuận An - 28212437716
+- Trần Thanh Sỹ - 28214652894
 - Nguyễn Văn Thành - 28211150438
 
 ---
