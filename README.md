@@ -7,10 +7,9 @@
 **Group Number:** Group 2
 
 ###  Group Members
-- [Member 1 Name] - [Student ID]
-- [Member 2 Name] - [Student ID]
-- [Member 3 Name] - [Student ID]
-- [Member 4 Name] - [Student ID]
+- Lê Thuận An - 
+- Trần Thanh Sỹ - 
+- Nguyễn Văn Thành - 28211150438
 
 ---
 
