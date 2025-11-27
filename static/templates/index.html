@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Greeting Contract - DS 441</title>
+    <script src="https://cdn.jsdelivr.net/npm/web3@1.8.0/dist/web3.min.js"></script>
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1> Greeting Contract Interface</h1>
+            <p>Blockchain Message Board - DS 441 Project</p>
+        </div>
+
+        <div class="connection-status">
+            <div class="status-indicator">
+                <div class="status-dot" id="statusDot"></div>
+                <span id="statusText">Not Connected</span>
+            </div>
+            <button class="btn-connect" id="connectBtn" onclick="connectWallet()">
+                Connect to Ganache
+            </button>
+        </div>
+
+        <div id="notConnected" class="alert alert-warning">
+            <strong> Not Connected</strong><br>
+            Please connect to Ganache first. Make sure Ganache is running on http://127.0.0.1:7545
+        </div>
+
+        <div id="mainContent" style="display: none;">
+            <div class="grid">
+                <!-- Current Greeting Card -->
+                <div class="card">
+                    <h2><span class="card-icon"></span>Current Greeting</h2>
+                    <div class="current-greeting" id="currentGreeting">
+                        Loading...
+                    </div>
+                    <button class="btn btn-secondary" onclick="loadGreeting()">
+                         Refresh
+                    </button>
+                </div>
+
+                <!-- Contract Statistics -->
+                <div class="card">
+                    <h2><span class="card-icon"></span>Contract Statistics</h2>
+                    <div class="stats-grid">
+                        <div class="stat-card">
+                            <div class="stat-value" id="greetingCount">0</div>
+                            <div class="stat-label">Total Greetings</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-value" id="historyCount">0</div>
+                            <div class="stat-label">History Entries</div>
+                        </div>
+                    </div>
+                    <div class="result-box" style="margin-top: 15px;">
+                        <strong>Owner:</strong><br>
+                        <span id="contractOwner" style="font-family: monospace; font-size: 0.9em;">-</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="grid">
+                <!-- Set Greeting Card -->
+                <div class="card">
+                    <h2><span class="card-icon"></span>Update Greeting</h2>
+                    <div class="input-group">
+                        <label for="newGreeting">New Greeting Message</label>
+                        <textarea 
+                            id="newGreeting" 
+                            placeholder="Enter your new greeting message (1-200 characters)..."
+                            maxlength="200"
+                        ></textarea>
+                        <small style="color: #6b7280;">
+                            <span id="charCount">0</span>/200 characters
+                        </small>
+                    </div>
+                    <button class="btn" onclick="setGreeting()">
+                         Update Greeting
+                    </button>
+                    <div id="setResult"></div>
+                </div>
+
+                <!-- History Card -->
+                <div class="card">
+                    <h2><span class="card-icon"></span>Greeting History</h2>
+                    <button class="btn btn-secondary" onclick="loadHistory()" style="margin-bottom: 15px;">
+                         Load History
+                    </button>
+                    <div id="historyList">
+                        <div class="loading">
+                            Click "Load History" to view all greetings
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Search History Card -->
+            <div class="card">
+                <h2><span class="card-icon"></span>Search History by Index</h2>
+                <div class="input-group">
+                    <label for="historyIndex">History Index (0-based)</label>
+                    <input 
+                        type="number" 
+                        id="historyIndex" 
+                        placeholder="Enter index number (e.g., 0, 1, 2...)"
+                        min="0"
+                    >
+                </div>
+                <button class="btn" onclick="getHistoryByIndex()">
+                     Search
+                </button>
+                <div id="searchResult"></div>
+            </div>
+        </div>
+    </div>
+
+    <script src="/static/js/script.js"></script>
+</body>
+</html>

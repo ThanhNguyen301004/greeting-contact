@@ -16,14 +16,14 @@ def compile_contract():
     install_solc("0.8.0")
     
     # Read the contract file
-    with open("Contract.sol", "r") as file:
+    with open("contract.sol", "r") as file:
         contract_source_code = file.read()
     
     # Compile the contract
     compiled_sol = compile_standard(
         {
             "language": "Solidity",
-            "sources": {"Contract.sol": {"content": contract_source_code}},
+            "sources": {"contract.sol": {"content": contract_source_code}},
             "settings": {
                 "outputSelection": {
                     "*": {
@@ -47,7 +47,7 @@ def deploy_contract(w3, account, private_key, compiled_sol):
     print("\n Deploying contract...")
     
     # Get contract data
-    contract_interface = compiled_sol["contracts"]["Contract.sol"]["GreetingContract"]
+    contract_interface = compiled_sol["contracts"]["contract.sol"]["GreetingContract"]
     bytecode = contract_interface["evm"]["bytecode"]["object"]
     abi = contract_interface["abi"]
     

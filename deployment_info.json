@@ -1,7 +1,7 @@
 {
-    "contract_address": "0x48Fe6e261e0d86Ac9ff21b889961487C093aC008",
-    "transaction_hash": "0xc316548da1cea9cc1e80c2a7234933b9747ce58107122ecb34fdb243c7ac3596",
-    "deployer_address": "0x5ccE2f203089e0B3B5c1A5E2D12827E18c45501B",
+    "contract_address": "0x893490A3E30a31D927B745Df6131Ff29CD99a835",
+    "transaction_hash": "0x2e06c9212d38a55de376f168a2aaabbd69c72b6a8742a6859ee94c7eedbbc898",
+    "deployer_address": "0xecf9D7196F547A6A465aeC89f5AB289fdA137401",
     "initial_greeting": "Hello, Blockchain World!",
-    "gas_used": 1223222
+    "gas_used": 1223773
 }

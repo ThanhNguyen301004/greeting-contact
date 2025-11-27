@@ -21,13 +21,13 @@ contract GreetingContract {
     event GreetingUpdated(
         string oldGreeting,
         string newGreeting,
-        address updatedBy,
+        address indexed updatedBy,
         uint256 timestamp
     );
     
     event GreetingSet(
         string greeting,
-        address setBy,
+        address indexed setBy,
         uint256 timestamp
     );
     
